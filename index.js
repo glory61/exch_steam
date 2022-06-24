@@ -1,6 +1,8 @@
 const puppeteer = require('puppeteer')
 const request = require("request");
-
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 function crop(number, digits, type){
     const _digits = Number(1 + Array(digits).fill(0).join(''))
     if (type === 'ceil') return Math.ceil(number * _digits) / _digits
@@ -11,9 +13,10 @@ function delay(time) {
         setTimeout(resolve, time)
     });
 }
-async function check() {
+async function run () {
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage()
+    while(true) {
     await page.goto('https://steamcommunity.com/market/listings/570/Shoulders%20of%20the%20Slain%20Dragon')
     await delay(40000);
     await page.click('#searchResults_links > span:nth-child(7)')
@@ -33,13 +36,19 @@ async function check() {
     let uri = 'https://api.telegram.org/bot5170808901:AAEb8fqekp8sW8bmVEbd8g_9s_YKRLVLZks/sendMessage?chat_id=342249156&text=Курс доллара в стиме: ' + c;
     let encoded = encodeURI(uri);
     request.get(encoded)
-
     await delay(4000);
     //const innerText = await page.evaluate(() => document.querySelector('.market_listing_price_with_fee').textContent.trim().replace('$', "").replace('USD', ""));
 
 
     await delay(44000);
+        //Do something...
+        await sleep(60 * 3)
+    }
+    await browser.close()
 
-     await browser.close()
-}
-setInterval(check, 10000);
+    }
+    run()
+
+
+
+
