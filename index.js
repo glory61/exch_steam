@@ -6,7 +6,6 @@ function crop(number, digits, type){
     if (type === 'ceil') return Math.ceil(number * _digits) / _digits
     if (type === 'floor') return Math.floor(number * _digits) / _digits
 }
-
 function delay(time) {
     return new Promise(function(resolve) {
         setTimeout(resolve, time)
