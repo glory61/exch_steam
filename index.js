@@ -15,9 +15,9 @@ async function check() {
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage()
     await page.goto('https://steamcommunity.com/market/listings/570/Shoulders%20of%20the%20Slain%20Dragon')
-    await delay(4000);
+    await delay(40000);
     await page.click('#searchResults_links > span:nth-child(7)')
-    await delay(4000);
+    await delay(40000);
     /* Run javascript inside the page */
     const hotels = await page.$$eval('.market_listing_price_with_fee', anchors => {
         return anchors.map(anchor => anchor.textContent.trim().replace('$', "").replace('USD', "").replace(',', ""))
