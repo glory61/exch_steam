@@ -18,9 +18,9 @@ async function run () {
     const page = await browser.newPage()
     while(true) {
     await page.goto('https://steamcommunity.com/market/listings/570/Shoulders%20of%20the%20Slain%20Dragon')
-    await delay(90000);
+    await delay(900000);
     await page.click('#searchResults_links > span:nth-child(7)')
-    await delay(90000);
+    await delay(900000);
     /* Run javascript inside the page */
     const hotels = await page.$$eval('.market_listing_price_with_fee', anchors => {
         return anchors.map(anchor => anchor.textContent.trim().replace('$', "").replace('USD', "").replace(',', ""))
