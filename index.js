@@ -12,7 +12,7 @@ function delay(time) {
     });
 }
 async function check() {
-    const browser = await puppeteer.launch({headless: true})
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage()
     await page.goto('https://steamcommunity.com/market/listings/570/Shoulders%20of%20the%20Slain%20Dragon')
     await delay(4000);
