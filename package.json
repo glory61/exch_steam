@@ -1,0 +1,11 @@
+{
+  "name": "steam",
+  "version": "1.0.0",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.11",
+    "puppeteer": "^14.4.1",
+    "puppeteer-extra": "^3.2.3",
+    "puppeteer-extra-plugin-stealth": "^2.9.0",
+    "request": "^2.88.2"
+  }
+}
