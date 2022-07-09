@@ -14,14 +14,20 @@ function delay(time) {
     });
 }
 async function run () {
-   // const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
-    const browser = await puppeteer.launch({ headless: false });
+   const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+    //const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage()
     while(true) {
     await page.goto('https://steamcommunity.com/market/listings/570/Shoulders%20of%20the%20Slain%20Dragon')
-    await delay(90000);
+    await delay(9000);
     await page.click('#searchResults_links > span:nth-child(7)')
-    await delay(90000);
+    await delay(9000);
+
+        const buffer = await page.screenshot({
+            fullPage: true,
+            type: 'png'
+        })
+
    await page.screenshot({path: 'buddy-screenshot.png'});
     /* Run javascript inside the page */
     const hotels = await page.$$eval('.market_listing_price_with_fee', anchors => {
